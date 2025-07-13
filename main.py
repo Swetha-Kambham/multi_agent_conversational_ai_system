@@ -10,7 +10,7 @@ from rag.document_handler import ingest_documents
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 import os
-
+from typing import Optional
 
 # --- Load .env ---
 load_dotenv()
@@ -21,6 +21,16 @@ MONGODB_URI = os.getenv("MONGODB_URI")
 client = MongoClient(MONGODB_URI)
 db = client["hackathon"]
 conversations_collection = db["conversations"]
+users_collection = db["users"]
+
+# Create User Schema
+class User(BaseModel):
+    user_id: str
+    name: str
+    email: str
+    company: Optional[str] = None
+    preferences: Optional[str] = None
+
 
 # --- FastAPI App ---
 app = FastAPI()
@@ -104,7 +114,7 @@ def chat(request: ChatRequest):
         "rag_context_used": rag_context[:500]  # Optional: return part of the context
     }
 
-# --- //upload_docs Endpoint ---
+# --- /upload_docs Endpoint ---
 @app.post("/upload_docs")
 async def upload_docs(file: UploadFile = File(...)):
     # Save uploaded file locally
@@ -120,3 +130,31 @@ async def upload_docs(file: UploadFile = File(...)):
 
     os.remove(file_location)
     return {"message": f"Indexed {num_chunks} document chunks from {file.filename}"}
+
+# --- /crm/create_user Endpoint ---
+@app.post("/crm/create_user")
+def create_user(user: User):
+    if users_collection.find_one({"user_id": user.user_id}):
+        raise HTTPException(status_code=400, detail="User already exists.")
+    
+    users_collection.insert_one(user.dict())
+    return {"message": f"User {user.user_id} created successfully."}
+
+# --- /crm/update_user Endpoint ---
+@app.put("/crm/update_user")
+def update_user(user: User):
+    result = users_collection.update_one(
+        {"user_id": user.user_id},
+        {"$set": user.dict()}
+    )
+    
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="User not found.")
+
+    return {"message": f"User {user.user_id} updated successfully."}
+
+# --- /crm/conversations{user_id}/ ---
+@app.get("/crm/conversations/{user_id}")
+def get_conversations(user_id: str):
+    convs = list(conversations_collection.find({"user_id": user_id}, {"_id": 0}))
+    return {"user_id": user_id, "conversations": convs}
