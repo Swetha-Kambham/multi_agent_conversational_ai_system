@@ -73,6 +73,9 @@ Answer:"""
     else:
         raise HTTPException(status_code=response.status_code, detail=response.text)
 
+class ResetRequest(BaseModel):
+    user_id: str
+
 
 # --- Root Endpoint ---
 @app.get("/")
@@ -158,3 +161,13 @@ def update_user(user: User):
 def get_conversations(user_id: str):
     convs = list(conversations_collection.find({"user_id": user_id}, {"_id": 0}))
     return {"user_id": user_id, "conversations": convs}
+
+# --- /reset ---
+@app.post("/reset")
+def reset_conversations(reset: ResetRequest):
+    result = conversations_collection.delete_many({"user_id": reset.user_id})
+
+    return {
+        "message": f"Deleted {result.deleted_count} conversation(s) for user {reset.user_id}"
+    }
+
