@@ -1,0 +1,33 @@
+{
+  "user_id": "swe1",
+  "conversations": [
+    {
+      "user_id": "swe1",
+      "message": "What is the monthly rent fro Tina Dalama?",
+      "response": "I'm sorry for the confusion in the question, but based on the provided context, Tia Dalma is associated with three properties, and I can provide the monthly rent for each one:\n\n1. Property Address: 8 W 38th St, Floor: P11, Suite: 1103, Monthly Rent: $149,190\n2. Property Address: 171 Elizabeth St, Floor: P6, Suite: 768, Monthly Rent: $173,937\n3. Property Address: 269 W 39th St, Floor: -, Suite: 810, Monthly Rent: $115,935\n\nPlease let me know if you need information on something else.",
+      "context": "unique_id: 206\nProperty Address: 8 W 38th St\nFloor: P11\nSuite: 1103\nSize (SF): 19892\nRent/SF/Year: $90.00\nAssociate 1: Tia Dalma\nBROKER Email ID: test2@okadaco.com\nAssociate 2: Jon Snow\nAssociate 3: Meemaw\nAssociate 4: Max Verstappen\nAnnual Rent: $1,790,280\nMonthly Rent: $149,190\nGCI On 3 Years: $322,250\n\nunique_id: 223\nProperty Address: 171 Elizabeth St\nFloor: P6\nSuite: 768\nSize (SF): 19507\nRent/SF/Year: $107.00\nAssociate 1: Tia Dalma\nBROKER Email ID: test2@okadaco.com\nAssociate 2: Arya Stark\nAssociate 3: Sheldon Cooper\nAssociate 4: Oscar Piastri\nAnnual Rent: $2,087,249\nMonthly Rent: $173,937\nGCI On 3 Years: $375,705\n\nunique_id: 142\nProperty Address: 269 W 39th St\nFloor: -\nSuite: 810\nSize (SF): 13507\nRent/SF/Year: $103.00\nAssociate 1: Tia Dalma\nBROKER Email ID: test2@okadaco.com\nAssociate 2: Jon Snow\nAssociate 3: Dr. Linkletter\nAssociate 4: Oscar Piastri\nAnnual Rent: $1,391,221\nMonthly Rent: $115,935\nGCI On 3 Years: $250,420",
+      "timestamp": "2025-07-13T18:43:27.231000"
+    },
+    {
+      "user_id": "swe1",
+      "message": "What is the monthly rent fro Tia Dlama whose property address is 314 E 34?",
+      "response": "The context provided does not include information about a property with the address 314 E 34 and associated with Tia Dalma. Therefore, it's not possible to answer this question without additional information.",
+      "context": "unique_id: 206\nProperty Address: 8 W 38th St\nFloor: P11\nSuite: 1103\nSize (SF): 19892\nRent/SF/Year: $90.00\nAssociate 1: Tia Dalma\nBROKER Email ID: test2@okadaco.com\nAssociate 2: Jon Snow\nAssociate 3: Meemaw\nAssociate 4: Max Verstappen\nAnnual Rent: $1,790,280\nMonthly Rent: $149,190\nGCI On 3 Years: $322,250\n\nunique_id: 223\nProperty Address: 171 Elizabeth St\nFloor: P6\nSuite: 768\nSize (SF): 19507\nRent/SF/Year: $107.00\nAssociate 1: Tia Dalma\nBROKER Email ID: test2@okadaco.com\nAssociate 2: Arya Stark\nAssociate 3: Sheldon Cooper\nAssociate 4: Oscar Piastri\nAnnual Rent: $2,087,249\nMonthly Rent: $173,937\nGCI On 3 Years: $375,705\n\nunique_id: 127\nProperty Address: 155 E 55th St\nFloor: P6\nSuite: 6A\nSize (SF): 16931\nRent/SF/Year: $92.00\nAssociate 1: Tia Dalma\nBROKER Email ID: test2@okadaco.com\nAssociate 2: Daenerys Targaryen\nAssociate 3: Dr. Sturgis\nAssociate 4: Charles Leclerc\nAnnual Rent: $1,557,652\nMonthly Rent: $129,804\nGCI On 3 Years: $280,377",
+      "timestamp": "2025-07-13T18:45:48.133000"
+    },
+    {
+      "user_id": "swe1",
+      "message": "What is the monthly rent fro Tia Dlama whose property address starts with is 314 E 34?",
+      "response": "I am unable to find the exact property you are looking for in the provided context. However, I can tell you that Tia Dalma's associated monthly rents for the properties listed are as follows:\n\n- Property Address: 8 W 38th St, Monthly Rent: $149,190\n- Property Address: 171 Elizabeth St, Monthly Rent: $173,937\n- Property Address: 269 W 39th St, Monthly Rent: $115,935\n\nPlease double-check the property address or provide more information.",
+      "context": "unique_id: 206\nProperty Address: 8 W 38th St\nFloor: P11\nSuite: 1103\nSize (SF): 19892\nRent/SF/Year: $90.00\nAssociate 1: Tia Dalma\nBROKER Email ID: test2@okadaco.com\nAssociate 2: Jon Snow\nAssociate 3: Meemaw\nAssociate 4: Max Verstappen\nAnnual Rent: $1,790,280\nMonthly Rent: $149,190\nGCI On 3 Years: $322,250\n\nunique_id: 223\nProperty Address: 171 Elizabeth St\nFloor: P6\nSuite: 768\nSize (SF): 19507\nRent/SF/Year: $107.00\nAssociate 1: Tia Dalma\nBROKER Email ID: test2@okadaco.com\nAssociate 2: Arya Stark\nAssociate 3: Sheldon Cooper\nAssociate 4: Oscar Piastri\nAnnual Rent: $2,087,249\nMonthly Rent: $173,937\nGCI On 3 Years: $375,705\n\nunique_id: 142\nProperty Address: 269 W 39th St\nFloor: -\nSuite: 810\nSize (SF): 13507\nRent/SF/Year: $103.00\nAssociate 1: Tia Dalma\nBROKER Email ID: test2@okadaco.com\nAssociate 2: Jon Snow\nAssociate 3: Dr. Linkletter\nAssociate 4: Oscar Piastri\nAnnual Rent: $1,391,221\nMonthly Rent: $115,935\nGCI On 3 Years: $250,420",
+      "timestamp": "2025-07-13T18:46:11.834000"
+    },
+    {
+      "user_id": "swe1",
+      "message": "What is the monthly rent fro Tia Dlama whose Property Address: 8 W 38th St?",
+      "response": "The monthly rent for Tia Dalma at the property address 8 W 38th St is $149,190.",
+      "context": "unique_id: 206\nProperty Address: 8 W 38th St\nFloor: P11\nSuite: 1103\nSize (SF): 19892\nRent/SF/Year: $90.00\nAssociate 1: Tia Dalma\nBROKER Email ID: test2@okadaco.com\nAssociate 2: Jon Snow\nAssociate 3: Meemaw\nAssociate 4: Max Verstappen\nAnnual Rent: $1,790,280\nMonthly Rent: $149,190\nGCI On 3 Years: $322,250\n\nunique_id: 164\nProperty Address: 139 Fifth Ave\nFloor: E6\nSuite: 600\nSize (SF): 15661\nRent/SF/Year: $99.00\nAssociate 1: Tia Dalma\nBROKER Email ID: test2@okadaco.com\nAssociate 2: Jon Snow\nAssociate 3: Dr. Sturgis\nAssociate 4: Charles Leclerc\nAnnual Rent: $1,550,439\nMonthly Rent: $129,203\nGCI On 3 Years: $279,079\n\nunique_id: 223\nProperty Address: 171 Elizabeth St\nFloor: P6\nSuite: 768\nSize (SF): 19507\nRent/SF/Year: $107.00\nAssociate 1: Tia Dalma\nBROKER Email ID: test2@okadaco.com\nAssociate 2: Arya Stark\nAssociate 3: Sheldon Cooper\nAssociate 4: Oscar Piastri\nAnnual Rent: $2,087,249\nMonthly Rent: $173,937\nGCI On 3 Years: $375,705",
+      "timestamp": "2025-07-13T18:46:52.267000"
+    }
+  ]
+}
