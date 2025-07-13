@@ -234,7 +234,7 @@ You can test endpoints using:
 
 **Swetha Kambham**  
 📧 swethakambham75@gmail.com  
-🌐 [LinkedIn](https://linkedin.com/in/swethakambham) *(optional)*
+🌐 [LinkedIn](https://www.linkedin.com/in/swetha-kambham-564096140/)
 
 ---
 
