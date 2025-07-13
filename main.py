@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 from pymongo import MongoClient
 import requests
 from datetime import datetime
+from fastapi import File, UploadFile
+from rag.document_handler import ingest_documents
 
 # --- Load .env ---
 load_dotenv()
@@ -79,3 +81,19 @@ def chat(request: ChatRequest):
         "message": prompt,
         "response": response
     }
+# --- //upload_docs Endpoint ---
+@app.post("/upload_docs")
+async def upload_docs(file: UploadFile = File(...)):
+    # Save uploaded file locally
+    file_location = f"temp_{file.filename}"
+    with open(file_location, "wb") as f:
+        f.write(await file.read())
+
+    try:
+        num_chunks = ingest_documents(file_location)
+    except ValueError as e:
+        os.remove(file_location)
+        raise HTTPException(status_code=400, detail=str(e))
+
+    os.remove(file_location)
+    return {"message": f"Indexed {num_chunks} document chunks from {file.filename}"}
