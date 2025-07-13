@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.env
+venv/
+env/
+*.egg-info/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# MacOS / Linux system files
+.DS_Store
+
+# Jupyter and notebook temp files (if ever used)
+.ipynb_checkpoints/
+*.ipynb
+
+# Docker
+*.pid
+*.tar
+docker-compose.override.yml
+
+# FAISS/Vector DB (optional)
+rag_index/
+
+# MongoDB dump files (optional)
+dump/
