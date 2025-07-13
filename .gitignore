@@ -26,7 +26,7 @@ env/
 # Docker
 *.pid
 *.tar
-docker-compose.override.yml
+docker-compose.yml
 
 # FAISS/Vector DB (optional)
 rag_index/
