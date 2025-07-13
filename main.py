@@ -7,6 +7,10 @@ import requests
 from datetime import datetime
 from fastapi import File, UploadFile
 from rag.document_handler import ingest_documents
+from langchain_community.vectorstores import FAISS
+from langchain_community.embeddings import HuggingFaceEmbeddings
+import os
+
 
 # --- Load .env ---
 load_dotenv()
@@ -27,7 +31,16 @@ class ChatRequest(BaseModel):
     message: str
 
 # --- Together AI Call ---
-def call_mixtral(prompt: str) -> str:
+def call_mixtral(user_question: str, context: str = "") -> str:
+    prompt = f"""You are a helpful assistant. Use the following context to answer the question.
+
+Context:
+{context}
+
+Question: {user_question}
+
+Answer:"""
+
     headers = {
         "Authorization": f"Bearer {TOGETHER_API_KEY}",
         "Content-Type": "application/json"
@@ -42,14 +55,11 @@ def call_mixtral(prompt: str) -> str:
 
     response = requests.post("https://api.together.xyz/inference", headers=headers, json=data)
 
-    print("Status code:", response.status_code)
-    print("Response body:", response.text)
-
     if response.status_code == 200:
         try:
             return response.json()["choices"][0]["text"].strip()
         except (KeyError, IndexError):
-            raise HTTPException(status_code=500, detail="Invalid response format from Together API.")
+            raise HTTPException(status_code=500, detail="Invalid response format from LLM.")
     else:
         raise HTTPException(status_code=response.status_code, detail=response.text)
 
@@ -62,25 +72,38 @@ def root():
 # --- /chat Endpoint ---
 @app.post("/chat")
 def chat(request: ChatRequest):
-    prompt = request.message
     user_id = request.user_id
+    user_query = request.message
 
-    # 1. Call LLM
-    response = call_mixtral(prompt)
+    # 🧠 RAG: Retrieve relevant chunks from FAISS
+    rag_context = ""
+    if os.path.exists("rag_index"):
+        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+        db = FAISS.load_local("rag_index", embeddings, allow_dangerous_deserialization=True)
+        results = db.similarity_search(user_query, k=3)
+        rag_context = "\n\n".join([doc.page_content for doc in results])
+    else:
+        print("No RAG index found. Proceeding without context.")
 
-    # 2. Log conversation to MongoDB
+    # 🤖 Call LLM with injected context
+    response = call_mixtral(user_query, context=rag_context)
+
+    # 🗃️ Log to MongoDB
     conversations_collection.insert_one({
         "user_id": user_id,
-        "message": prompt,
+        "message": user_query,
         "response": response,
+        "context": rag_context,
         "timestamp": datetime.utcnow()
     })
 
     return {
         "user_id": user_id,
-        "message": prompt,
-        "response": response
+        "message": user_query,
+        "response": response,
+        "rag_context_used": rag_context[:500]  # Optional: return part of the context
     }
+
 # --- //upload_docs Endpoint ---
 @app.post("/upload_docs")
 async def upload_docs(file: UploadFile = File(...)):
